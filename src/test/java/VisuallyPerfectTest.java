@@ -71,8 +71,8 @@ public class VisuallyPerfectTest
       //Simulate Self-Healing
       //((JavascriptExecutor)driver).executeScript("document.querySelector('#log-in').id='BlaBla_id'");
 
-      driver.findElement(By.id("username")).sendKeys("andy");
-      driver.findElement(By.id("password")).sendKeys("i<3pandas");
+      driver.findElement(By.id("username")).sendKeys("brandon");
+      driver.findElement(By.id("password")).sendKeys("mypasss");
       driver.findElement(By.id("log-in")).click();
       eyes.check(Target.window().fully().withName("dashboard"));
 
