@@ -49,32 +49,23 @@ public class VisuallyPerfectTest
 
     // Initialize the eyes SDK
     eyes = new Eyes(runner);
-    eyes.setLogHandler(new StdoutLogHandler(true));
+    //eyes.setLogHandler(new StdoutLogHandler(true));
     eyes.setConfiguration(sconf);
     eyes.open(driver, "Visually Perfect", testInfo.getDisplayName());
   }
 
   @Test
-  public void TestLoginFlow() throws InterruptedException {
-    try {
-      driver.get("http://demo.applitools.com");
-      eyes.check(Target.window().fully().withName("login page"));
+  public void loginFlow() {
+    driver.get("http://demo.applitools.com");
+    eyes.check(Target.window().fully().withName("login page"));
 
-      //Simulate Self-Healing
-      //((JavascriptExecutor)driver).executeScript("document.querySelector('#log-in').id='BlaBla_id'");
+    //Simulate Self-Healing
+    //((JavascriptExecutor)driver).executeScript("document.querySelector('#log-in').id='BlaBla_id'");
 
-      driver.findElement(By.id("username")).sendKeys("brandon");
-      driver.findElement(By.id("password")).sendKeys("mypasss");
-      driver.findElement(By.id("log-in")).click();
-      eyes.check(Target.window().fully().withName("dashboard"));
-
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-    finally {
-      eyes.abortAsync();
-    }
+    driver.findElement(By.id("username")).sendKeys("brandon");
+    driver.findElement(By.id("password")).sendKeys("mypasss");
+    driver.findElement(By.id("log-in")).click();
+    eyes.check(Target.window().fully().withName("dashboard"));
   }
 
   @AfterEach
